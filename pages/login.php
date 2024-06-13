@@ -69,10 +69,7 @@
         let res = await response.json();
 
         if (res.result == "success") {
-            // var myModal = new bootstrap.Modal(
-            //     document.getElementById("modalRegister")
-            // );
-            // myModal.show();
+            
             setTimeout(() => {
                 location.href = "users";
             }, 1500);

@@ -52,7 +52,7 @@ class User {
             
             $result = $result->fetch_assoc();
             if (password_verify($pass, $result["pass"])) {
-                $_SESSION["id_user"] = $result["id"];
+                $_SESSION["user_id"] = $result["id"];
                 $_SESSION["name"] = $result["name"];
                 $_SESSION["lastname"] = $result["lastName"];
                 $_SESSION["email"] = $result["email"];

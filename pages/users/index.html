@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -88,10 +89,19 @@
                                 </h1>
                                 <h2>
                                     <span>Фамилия и имя: </span
-                                    ><span>Иванов Петр</span>
+                                    ><span
+                                        ><?php echo $_SESSION["lastname"]; ?>
+                                        <?php echo $_SESSION["name"]; ?>
+                                    </span>
                                 </h2>
-                                <h3>Email: ivan@ya.ru</h3>
-                                <p>Id: 2</p>
+                                <h3>
+                                    Email:
+                                    <?php echo $_SESSION["email"]; ?>
+                                </h3>
+                                <p>
+                                    Id:
+                                    <?php echo $_SESSION["user_id"]; ?>
+                                </p>
                                 <p>
                                     Рассказываю о себе всякое Lorem ipsum dolor,
                                     sit amet consectetur adipisicing elit.
@@ -272,10 +282,6 @@
         <!-- <script src="script.js"></script> -->
         <script>
             let pathname = location.pathname.split("/")[2];
-            alert("location.host = " + location.host);
-            if (pathname == undefined) {
-                location.href = location.protocol + "//" + location.host + "/users/profile";
-            }
 
             addEventListener("popstate", () => {
                 let pathPopstate = location.pathname.split("/")[2];
@@ -302,8 +308,8 @@
                 /*    new bootstrap.Tab(choice).show();*/
             } else if (pathname == "settings") {
                 choi = document.querySelector("#v-pills-settings-tab");
-            } else {
-                location.href = location.protocol + "//" + location.host;
+                /* } else {
+                location.href = location.protocol + "//" + location.host;*/
             }
 
             new bootstrap.Tab(choi).show();
