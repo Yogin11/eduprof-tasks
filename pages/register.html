@@ -1,0 +1,179 @@
+<!-- ================ start banner area ================= -->
+<section class="blog-banner-area" id="category">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Регистрация</h1>
+                <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Регистрация
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ================ end banner area ================= -->
+
+<!--================Login Box Area =================-->
+<section class="login_box_area section-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <div class="hover">
+                        <h4>Вы уже имеете зарегистрированный аккаунт?</h4>
+                        <p>
+                            Получите все преимущества премиум аккаунта.
+                            Перейдите на страницу авторизации.
+                        </p>
+                        <a class="button button-account" href="/login">Войти</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner register_form_inner">
+                    <h3>Зарегистрироваться</h3>
+                    <form
+                        class="row login_form"
+                        onsubmit="sendForm(this); return false;"
+                    >
+                        <div class="col-md-12 form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="name"
+                                required
+                                placeholder="Ваше имя"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Ваше имя'"
+                            />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="lastname"
+                                required
+                                placeholder="Ваша фамилия"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Ваша фамилия'"
+                            />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input
+                                type="email"
+                                class="form-control"
+                                name="email"
+                                reguired
+                                placeholder="Email адрес"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Email адрес'"
+                            />
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="pass"
+                                reguired
+                                placeholder="Введите пароль"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Введите пароль'"
+                            />
+                        </div>
+                        <!-- <div class="col-md-12 form-group">
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="confirmPassword"
+                                reguired
+                                placeholder="Подтвердите пароль"
+                                onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Подтвердите пароль'"
+                            />
+                        </div> -->
+                        <div class="col-md-12 form-group">
+                            <div class="creat_account">
+                                <input type="checkbox" id="f-option2" />
+                                <label for="f-option2"
+                                    >Согласие на обработку персональных
+                                    данных</label
+                                >
+                            </div>
+                        </div>
+                        <p id="info"></p>
+                        <div class="col-md-12 form-group">
+                            <button
+                                type="submit"
+                                class="button button-register w-100"
+                            >
+                                Зарегистрироваться
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Login Box Area =================-->
+
+<!-- Модальное окно старт -->
+<!-- Modal -->
+<div
+    class="modal fade"
+    id="modalRegister"
+    data-backdrop="static"
+    data-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    Регистрация прошла успешно
+                </h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+            </div>
+            <div class="modal-body">И вы будете направлены на страницу</div>
+            <div class="modal-footer">
+                авторизации через 3 секунды
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно финиш -->
+
+<script>
+    async function sendForm(forma) {
+        let formData = new FormData(forma);
+        let response = await fetch("addUser", {
+            method: "POST",
+            body: formData,
+        });
+        let res = await response.json();
+
+        if (res.result == "success") {
+            var myModal = new bootstrap.Modal(
+                document.getElementById("modalRegister")
+            );
+            myModal.show();
+            setTimeout(() => {
+                location.href = "login";
+            }, 3000);
+        } else if (res.result == "exist") {
+            document.getElementById("info").innerText =
+                "Такой пользователь уже  есть!";
+        }
+    }
+</script>

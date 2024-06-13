@@ -1,0 +1,9 @@
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "html": {
+        "format": {
+            "wrapAttributes": false
+        }
+    }
+}
