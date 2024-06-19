@@ -1,10 +1,10 @@
 import { NavLink, Route, Routes } from "react-router-dom";
+import { Profile } from "./components/Profile";
 
-//Компонент профайл
-const Profile = () => {
-    return <h2>Страница профиля</h2>
-};
-
+//Компонент профайл -->убираем в отд файл
+// const Profile = () => {
+//     return <h2>Страница профиля</h2>
+// };
 
 
 function App() {
