@@ -7,6 +7,18 @@ const user = {
     about: "Here is my discography",
 };
 
+const users = {
+    0: { name: 'Tico', lastname: "Torres" },
+    1: { name: 'Richie', lastname: "Sambora" },
+    2: { name: 'Alec John', lastname: "Such" },
+    3: { name: 'David', lastname: "Bryan" },
+    
+}
+
 export function getUser() {
     return user;
+}
+
+export function getUsers() {
+    return users;
 }

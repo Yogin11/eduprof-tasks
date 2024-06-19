@@ -10,7 +10,7 @@ import { Settings } from "./components/Settings";
 // };
 
 function App(props) {
-  // console.log(props);
+    // console.log(props);
   return (
     // <h1 className="text-center mt-5">Мой контент страницы</h1>;
     <div className="container mt-5">
@@ -32,10 +32,10 @@ function App(props) {
           </div>
         </div>
         <div className="col-9">
-          <Routes>
-            <Route path="/" element={<h2> Вы в личном кабинете. Выбор в меню слева. </h2>} />
-            <Route path="/profile" element={<Profile function={props.function} />} />
-            <Route path="/friends" element={<Friends />} />
+                  <Routes>
+                      <Route path="/" element={<h2> Вы в личном кабинете. Выбор в меню слева. </h2>} />
+            <Route path="/profile" element={<Profile function={props.users.key_getUser}/>}  />
+            <Route path="/friends" element={<Friends function={props.users.key_getUsers}/>} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styles from "./Profile.module.css";
 
 export const Profile = (props) => {
