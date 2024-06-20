@@ -6,8 +6,9 @@ export const Profile = (props) => {
     color: "green",
     fontSize: "2rem",
   };
-  let user = props.function();
-  console.log(user);
+  let userId = window.location.pathname.split("/")[2];
+  let user = props.function(userId);
+//   console.log(user);
 
   return (
     <div className="row">
@@ -16,6 +17,7 @@ export const Profile = (props) => {
           className="img-fluid"
           src={user.avatar}
           //   src="https://img.freepik.com/free-psd/3d-illustration-bald-person-with-glasses_23-2149436184.jpg"
+          
           alt="Фото пользователя"
         />
       </div>

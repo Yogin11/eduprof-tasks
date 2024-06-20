@@ -2,7 +2,7 @@ import { NavLink, Route, Routes } from "react-router-dom";
 import { Profile } from "./components/Profile";
 import { Friends } from "./components/Friends";
 import { Messages } from "./components/Messages";
-import { Settings } from "./components/Settings";
+import  Settings from "./components/Settings";
 
 import PropTypes from 'prop-types';
 //Компонент профайл -->убираем в отд файл
@@ -41,7 +41,7 @@ function App(props) {
         <div className="col-9">
           <Routes>
             <Route path="/" element={<h2> Вы в личном кабинете. Выбор в меню слева. </h2>} />
-            <Route path="/profile" element={<Profile function={props.users.key_getUser} />} />
+            <Route path="/profile/*" element={<Profile function={props.users.key_getUser} />} />
             <Route path="/friends" element={<Friends function={props.users.key_getUsers} />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/settings" element={<Settings />} />
