@@ -1,4 +1,12 @@
+
+import PropTypes from 'prop-types';
+
 const TableRow = (props) => {
+    TableRow.propTypes = {
+        index: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        lastname: PropTypes.string.isRequired,
+    }
   return (
     <tr>
       <th scope="row">{props.index + 1}</th>
@@ -8,9 +16,9 @@ const TableRow = (props) => {
   );
 };
 
-export const Friends = (props) => {
-    let users = props.function();
-    console.log(users);
+export const Friends = (data) => {
+  let users = data.function();
+  console.log(users);
   let usersCount = Object.keys(users).length;
   let usersRow = [];
   for (let i = 0; i < usersCount; i++) {
@@ -20,7 +28,7 @@ export const Friends = (props) => {
   return (
     <div className="row">
       <div className="col-12">
-        <table className="table">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -28,9 +36,7 @@ export const Friends = (props) => {
               <th scope="col">Фамилия</th>
             </tr>
           </thead>
-          <tbody>
-             {usersRow}
-          </tbody>
+          <tbody>{usersRow}</tbody>
         </table>
       </div>
     </div>
