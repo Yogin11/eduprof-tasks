@@ -8,6 +8,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App users={{ key_getUser: getUser, key_getUsers: getUsers }} />
+    <App items={{ key_getUser: getUser, key_getUsers: getUsers }} />
   </BrowserRouter>
 );

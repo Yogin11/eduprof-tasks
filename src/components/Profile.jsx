@@ -23,10 +23,10 @@ export const Profile = (props) => {
       </div>
       <div className="col-md-8">
         <h2 className={styles.name}>
-          Фамилия имя:{" "}
+          Имя фамилия:{" "}
           <span>
             {" "}
-            {user.lastname} {user.name}{" "}
+            {user.name} {user.lastname} {" "}
           </span>
         </h2>
         <p className={styles.email}>

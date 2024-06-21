@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const TableRow = (props) => {
       <th scope="row">{props.index + 1}</th>
       <td>{props.id}</td>
       <td>
-        <NavLink to={"/profile/"+props.id}>
+        <NavLink to={"/profile/" + props.id}>
           {" "}
           {props.name} {props.lastname}
         </NavLink>
@@ -22,30 +23,71 @@ const TableRow = (props) => {
   );
 };
 
-export const Friends = (data) => {
-  let users = data.function();
-  //   console.log(users);
-  let usersCount = Object.keys(users).length;
-  let usersRow = [];
-  for (let i = 0; i < usersCount; i++) {
-    usersRow.push(<TableRow key={i} index={i} name={users[i].name} lastname={users[i].lastname} id={users[i].id} email={users[i].email} />);
+export class Friends extends React.Component {
+  constructor(data) {
+    super(data);
+    this.state = { usersRow: [] };
+  }
+  componentDidMount() {
+    this.props.function().then((users) => {
+    //   console.log(users);
+      let usersCount = Object.keys(users).length;
+      let usersRow = [];
+      for (let i = 0; i < usersCount; i++) {
+        usersRow.push(
+          <TableRow key={i} index={i} name={users[i].name} lastname={users[i].lastname} id={users[i].id} email={users[i].email} />
+        );
+      }
+        this.setState({usersRow: usersRow});
+    });
   }
 
-  return (
-    <div className="row">
-      <div className="col-12">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">№</th>
-              <th scope="col">Id</th>
-              <th scope="col">Имя Фамилия</th>
-              <th scope="col">Email</th>
-            </tr>
-          </thead>
-          <tbody>{usersRow}</tbody>
-        </table>
+  render() {
+    return (
+      <div className="row">
+        <div className="col-12">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">№</th>
+                <th scope="col">Id</th>
+                <th scope="col">Имя Фамилия</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>{this.state.usersRow}</tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+// export const Friends = (data) => {
+//   let users = data.function();
+//   console.log(users);
+//   let usersCount = Object.keys(users).length;
+//   let usersRow = [];
+//   for (let i = 0; i < usersCount; i++) {
+//     usersRow.push(<TableRow key={i} index={i} name={users[i].name} lastname={users[i].lastname} id={users[i].id} email={users[i].email} />);
+//   }
+
+//   return (
+//     <div className="row">
+//       <div className="col-12">
+//         <table className="table table-hover">
+//           <thead>
+//             <tr>
+//               <th scope="col">№</th>
+//               <th scope="col">Id</th>
+//               <th scope="col">Имя Фамилия</th>
+//               <th scope="col">Email</th>
+//             </tr>
+//           </thead>
+//           <tbody>{usersRow}</tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+
+// };
